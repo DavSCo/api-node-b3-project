@@ -4,7 +4,7 @@ const ProjectManager = require('../Controllers/ProjectManager');
 
 /* GET home page. */
 router.post('/', ProjectManager.addNewProject);
-router.get('/', ProjectManager.test);
+router.get('/', ProjectManager.getAllProject);
 
 
 module.exports = router;

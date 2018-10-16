@@ -37,6 +37,15 @@ module.exports = {
                 if (err) return handleError(err);
                 console.log('The project is %s', project.Client.Name);
             });
+
+            
+    },
+
+    getAllProject: (req, res, next) =>
+    {
+        Project
+        .find({})
+        .then(data => res.json(data))
     }
    
 }
