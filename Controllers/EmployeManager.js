@@ -1,15 +1,13 @@
 const Employe = require('../Models/Employe');
 const mongoose = require('mongoose');
 module.exports = {
-    getAllEmploye: (req, res, next) => 
-    {
-        Client
-        .find({})
-        .then(data => res.json(data));
+    getAllEmploye: (req, res, next) => {
+        Employe
+            .find({})
+            .then(data => res.json(data));
     },
-   
-    addNewEmploye: (req, res, next) =>
-    {
+
+    addNewEmploye: (req, res, next) => {
         Employe.create(
             {
                 _id: new mongoose.Types.ObjectId(),
@@ -26,9 +24,44 @@ module.exports = {
                 MailContact: req.body.mailcontact,
                 Status: req.body.status,
             }
-          , function (err) {
-            if (err) return console.log(err);
-            return res.send(202);
-          });
+            , function (err) {
+                if (err) return console.log(err);
+                return res.send(202);
+            });
+    },
+    findEmployeById: (req, res) => {
+        Employe
+            .findById(req.params.id)
+            .then(data => res.send(data));
+    },
+    updateEmploye: (req, res, next) => {
+        const { FName, LName, UserName, Street, City, ZipCode, FNameContact, LNameContact, PhoneContact, MailContact, Status } = req.body;
+        Employe.update({
+            FName,
+            LName,
+            UserName,
+            Street,
+            City,
+            ZipCode,
+            FNameContact,
+            LNameContact,
+            PhoneContact,
+            MailContact,
+            Status
+        },
+            {
+                where: {
+                    _id: req.params.id
+                }
+            }).then(data => res.send(data));
+    },
+    removeEmploye: (req, res, next) => {
+        Employe.findByIdAndRemove(req.params.id, (err) => {
+            if (err) {
+                res.send(err);
+            } else {
+                res.send("Deleted");
+            }
+        })
     }
 }

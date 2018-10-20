@@ -3,6 +3,15 @@ var router = express.Router();
 const EmployeController = require('../Controllers/EmployeManager');
 
 /* GET home page. */
-router.post('/', EmployeController.addNewEmploye);
+router
+    .route('/')
+    .get(EmployeController.getAllEmploye)
+    .post(EmployeController.addNewEmploye);
+
+router
+    .route('/:id')
+    .get(EmployeController.findEmployeById)
+    .put(EmployeController.updateEmploye)
+    .delete(EmployeController.removeEmploye);
 
 module.exports = router;
