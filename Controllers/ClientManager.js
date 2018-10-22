@@ -56,9 +56,10 @@ module.exports = {
             {
                 res.send(err);
             }else{
-                res.send("Deleted");
+                res.send({message: "User deleted successfully!"});
             }
         })
     }
+  
 
 }
