@@ -26,6 +26,7 @@ module.exports = {
             }
             , function (err) {
                 if (err) return console.log(err);
+                else{{message: "Employe Created successfully!"}}
                 return res.send(202);
             });
     },
