@@ -50,9 +50,11 @@ module.exports = {
         Project.
         findOne({ _id: req.params.id }).
         populate('Client').
+        populate({path: 'Employes', model: 'Employe'}).
         exec(function (err, project) {
             if (err) return handleError(err);
             console.log('The project is %s', project.Client.Name);
+            console.log(project);
             res.send(project);
         });
     },
