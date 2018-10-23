@@ -26,6 +26,7 @@ module.exports = {
             }
             , function (err) {
                 if (err) return console.log(err);
+                else{{message: "Employe Created successfully!"}}
                 return res.send(202);
             });
     },
@@ -60,7 +61,7 @@ module.exports = {
             if (err) {
                 res.send(err);
             } else {
-                res.send("Deleted");
+                res.send({message:"Deleted"});
             }
         })
     }

@@ -15,8 +15,8 @@ module.exports = {
                 Street: req.body.street,
                 City: req.body.city,
                 ZipCode: req.body.zipcode,
-                FNameContact: req.body.fname,
-                LNameContact: req.body.lname,
+                FNameContact: req.body.fnamecontact,
+                LNameContact: req.body.lnamecontact,
                 PhoneContact: req.body.phone,
                 MailContact: req.body.mail,
                 Activity: req.body.activity,
@@ -56,9 +56,10 @@ module.exports = {
             {
                 res.send(err);
             }else{
-                res.send("Deleted");
+                res.send({message: "User deleted successfully!"});
             }
         })
     }
+  
 
 }
