@@ -14,7 +14,7 @@ const Project = new Schema({
     Status: String,
     CreateDate: { type: Date, default: Date.now },
     Client: { type: Schema.Types.ObjectId, ref: 'Client' },
-    Employes : [{ type: Schema.Types.ObjectId, ref: 'Employe' }]
+    Employes : [{ type: Schema.Types.ObjectId, ref: 'Employes' }]
 });
 
 module.exports = mongoose.model('Project', Project);
