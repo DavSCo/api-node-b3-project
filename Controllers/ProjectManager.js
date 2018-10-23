@@ -110,5 +110,17 @@ module.exports = {
         .count().then(c => res.json(c))
     },
 
+    amountTotal:(req, res, next) => {
+        Project
+        .find({Status: 'done'}, function (err, amount) {
+            if (err) return next(err);
+            total = 0;
+            amount.forEach(element => {
+                total += element.Amount;
+            });
+            res.json(total);
+        });
+        
+    }
    
 }

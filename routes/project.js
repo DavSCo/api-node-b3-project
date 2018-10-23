@@ -5,6 +5,7 @@ const ProjectManager = require('../Controllers/ProjectManager');
 /* GET home page. */
 router.post('/', ProjectManager.addNewProject);
 router.get('/', ProjectManager.getAllProject);
+router.get('/amount', ProjectManager.amountTotal);
 router.get('/countDone', ProjectManager.countProjectDone);
 router.get('/countCreated', ProjectManager.countProjectCreated);
 router.get('/countCancel', ProjectManager.countProjectCancel);
