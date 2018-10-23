@@ -60,7 +60,12 @@ module.exports = {
                 res.send({message: "User deleted successfully!"});
             }
         })
-    }
+    },
+    countClient: (req, res, next) => {
+        Client
+        .find({})
+        .count().then(count => res.json(count));
+  }
   
 
 }

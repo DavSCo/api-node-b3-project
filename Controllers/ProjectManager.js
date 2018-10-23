@@ -87,6 +87,28 @@ module.exports = {
                 res.send("Deleted");
             }
         })
-    }
+    },
+
+    countProjectCreated: (req, res, next) => {
+        Project
+        .find({Status: 'created'})
+        .count().then(c => res.json(c))
+    },
+    countProjectProgress: (req, res, next) => {
+        Project
+        .find({Status: 'in-progress'})
+        .count().then(c => res.json(c))
+    },
+    countProjectDone: (req, res, next) => {
+        Project
+        .find({Status: 'done'})
+        .count().then(c => res.json(c))
+    },
+    countProjectCancel: (req, res, next) => {
+        Project
+        .find({Status: 'cancel'})
+        .count().then(c => res.json(c))
+    },
+
    
 }

@@ -66,5 +66,11 @@ module.exports = {
                 res.send({message:"Deleted"});
             }
         })
+    },
+
+    countEmploye: (req, res, next) => {
+          Employe
+          .find({})
+          .count().then(count => res.json(count));
     }
 }
