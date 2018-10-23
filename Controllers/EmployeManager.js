@@ -37,18 +37,20 @@ module.exports = {
     },
     updateEmploye: (req, res, next) => {
         const { FName, LName, UserName, Street, City, ZipCode, FNameContact, LNameContact, PhoneContact, MailContact, Status } = req.body;
-        Employe.update({
-            FName,
-            LName,
-            UserName,
-            Street,
-            City,
-            ZipCode,
-            FNameContact,
-            LNameContact,
-            PhoneContact,
-            MailContact,
-            Status
+        Employe.findByIdAndUpdate(req.params.id,
+            {
+                FName: req.body.fname,
+                LName: req.body.lname,
+                UserName: req.body.username,
+                BirthDate: req.body.birthdate,
+                Street: req.body.street,
+                City: req.body.city,
+                ZipCode: req.body.zipcode,
+                FNameContact: req.body.fnamecontact,
+                LNameContact: req.body.lnamecontact,
+                PhoneContact: req.body.phonecontact,
+                MailContact: req.body.mailcontact,
+                Status: req.body.status
         },
             {
                 where: {

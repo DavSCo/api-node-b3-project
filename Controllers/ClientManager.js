@@ -32,23 +32,24 @@ module.exports = {
             .then(data => res.send(data));
     },
     updateClient: (req, res, next) => {
-        const { Name, Street, City, ZipCode, FNameContact, LNameContact, PhoneContact, MailContact, Activity } = req.body;
-        Client.update({
-            Name,
-            Street,
-            City,
-            ZipCode,
-            FNameContact,
-            LNameContact,
-            PhoneContact,
-            MailContact,
-            Activity
-        },
+        Client.findByIdAndUpdate(req.params.id,
             {
-                where: {
-                    _id: req.params.id
-                }
-            }).then(data => res.send(data));
+            Name:req.body.name,
+            Street: req.body.street,
+            City: req.body.city,
+            ZipCode: req.body.zipcode,
+            FNameContact: req.body.fnamecontact,
+            LNameContact: req.body.lnamecontact,
+            PhoneContact: req.body.phone,
+            MailContact: req.body.mail,
+            Activity: req.body.activity,
+        },
+        (err) => {
+            if (err)
+                res.send(`Oups ! Error with update. ${err}`);
+            else
+                res.send('Update sucessfull');
+        });
     },
     removeClient: (req, res, next) => {
         Client.findByIdAndRemove(req.params.id,(err)=>{
